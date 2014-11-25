@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Web Test Suit">
+
+	<test name="WebDriverFactory Test">
+		<classes>
+			<class name="pl.webtest.WebDriverFactoryTest" />
+		</classes>
+	</test>
+	
+	<test name="WebDriverUtil Test">
+		<classes>
+			<class name="pl.webtest.util.WebDriverUtilsTest" />
+		</classes>
+	</test>	
+		
+</suite>
