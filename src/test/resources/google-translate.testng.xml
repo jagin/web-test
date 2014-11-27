@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Google Translate Test Suit">
+
+	<test name="Google Translate Selenium Test (english->polish)">
+		<parameter name="fromLang" value="en" />
+		<parameter name="toLang" value="pl" />
+		<parameter name="translateString" value="selenium" />
+		<parameter name="expectedResult" value="selen" />
+		<classes>
+			<class name="pl.webtest.test.google.GoogleTranslateSeleniumTest" />
+		</classes>
+	</test>	
+	
+	<test name="Google Translate Selenium Test (polish->english)">
+		<parameter name="fromLang" value="pl" />
+		<parameter name="toLang" value="en" />
+		<parameter name="translateString" value="selen" />
+		<parameter name="expectedResult" value="selenium" />
+		<classes>
+			<class name="pl.webtest.test.google.GoogleTranslateSeleniumTest" />
+		</classes>
+	</test>		
+		
+</suite>

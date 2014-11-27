@@ -1,10 +1,10 @@
 package pl.webtest.test.google;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.greaterThan;
+
 import java.util.ArrayList;
 import java.util.List;
-
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.*;
 
 import org.apache.commons.lang3.StringUtils;
 import org.openqa.selenium.By;

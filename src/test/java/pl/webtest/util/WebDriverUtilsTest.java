@@ -7,6 +7,7 @@ import static org.hamcrest.Matchers.equalTo;
 import java.io.File;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.Reporter;
 import org.testng.SkipException;
@@ -60,8 +61,10 @@ public class WebDriverUtilsTest {
 			throw new SkipException("The path to the driver executable (webdriver.ie.driver) is not set");
 		}
 		
-		WebDriverFactory wdf = new WebDriverFactory("ie");
-		WebDriver wd = wdf.createDriver(new DesiredCapabilities());
+		WebDriverFactory wdf = new WebDriverFactory("internet explorer");
+		DesiredCapabilities capabilities = new DesiredCapabilities();
+		capabilities.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS, true);
+		WebDriver wd = wdf.createDriver(capabilities);
 		wd.get("http://google.com");
 		File screenshotFile = WebDriverUtils.saveScreenshot(wd, getScreenshotName("ie"));
 		wd.quit();

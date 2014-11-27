@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Google Test Suit">
+<suite name="Google Search Test Suit">
 
 	<test name="Google Search Selenium Test">
 		<classes>
@@ -8,22 +8,12 @@
 		</classes>
 	</test>
 
-	<test name="Google Search Page Object Design Pattern Search">
+	<test name="Google Search Page Object Test">
 		<parameter name="searchString" value="selenium" />
 		<parameter name="expectedResult" value="Selenium" />
 		<classes>
 			<class name="pl.webtest.test.google.GoogleSearchPageTest" />
 		</classes>
-	</test>
-	
-	<test name="Google Translate Selenium Test">
-		<parameter name="fromLang" value="en" />
-		<parameter name="toLang" value="pl" />
-		<parameter name="translateString" value="selenium" />
-		<parameter name="expectedResult" value="selen" />
-		<classes>
-			<class name="pl.webtest.test.google.GoogleTranslateSeleniumTest" />
-		</classes>
-	</test>	
+	</test>		
 		
 </suite>

@@ -3,7 +3,7 @@ package pl.webtest.page;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
-/*
+/**
  * Page object pattern.
  * Abstract class representation of a Page in the UI.
  * 
@@ -14,7 +14,7 @@ public abstract class Page {
 
 	protected WebDriver webDriver;
 
-	/*
+	/**
 	 * Constructor injecting the WebDriver interface
 	 * 
 	 * @param webDriver

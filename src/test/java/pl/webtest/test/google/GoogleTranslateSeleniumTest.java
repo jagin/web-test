@@ -1,8 +1,5 @@
 package pl.webtest.test.google;
 
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.equalTo;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -31,12 +28,8 @@ public class GoogleTranslateSeleniumTest extends SeleniumTestBase {
         // Sleep until the div we want is visible or 5 seconds is over
         // We need to wait as div with translation results is loaded dynamically on every key input
         WebDriverWait wait = new WebDriverWait(getWebDriver(), 5);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("result_box")));
+        wait.until(ExpectedConditions.textToBePresentInElementLocated(By.id("result_box"), expectedResult));
 
-        // And now list the suggestions
-        WebElement result = getWebDriver().findElement(By.id("result_box"));
-        
-        assertThat(result.getText(), equalTo(expectedResult));
         Reporter.log("Google translation successful");
     }
 

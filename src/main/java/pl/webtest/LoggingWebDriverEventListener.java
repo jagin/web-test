@@ -8,7 +8,10 @@ import org.openqa.selenium.support.events.WebDriverEventListener;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.Reporter;
- 
+
+/**
+ * @code WebDriver event listener
+ */
 public class LoggingWebDriverEventListener implements WebDriverEventListener {
     private static final Logger logger = LoggerFactory.getLogger(LoggingWebDriverEventListener.class);
     
@@ -20,18 +23,22 @@ public class LoggingWebDriverEventListener implements WebDriverEventListener {
     			"WebDriver changed value in element found by '%s' from '%s' to '%s'",
         		getElementLocator(element) /*lastFindBy*/, originalValue, element.getAttribute("value"))
         		.toString();
+    	// Log the message to the logger
         logger.info(message);
+        // Log the message to the reporter
         Reporter.log(message);
     }
 
     public void afterClickOn(WebElement element, WebDriver driver) {
-    	String message = String.format("WebDriver clicked on element found by '%s'", getElementLocator(element)).toString();
+    	String message = String.format("WebDriver clicked on element found by '%s'", getElementLocator(element));
         logger.info(message);
         Reporter.log(message); 
     }
 
     public void afterFindBy(By by, WebElement element, WebDriver driver) {
-    	logger.debug("WebDriver found element '{}'", by);
+    	String message = String.format("WebDriver found element '%s'", by);
+        logger.info(message);
+        Reporter.log(message);
     }
 
     public void afterNavigateBack(WebDriver driver) {
@@ -43,7 +50,7 @@ public class LoggingWebDriverEventListener implements WebDriverEventListener {
     }
 
     public void afterNavigateTo(String url, WebDriver driver) {
-    	String message = String.format("WebDriver navigated to '%s'", url).toString();
+    	String message = String.format("WebDriver navigated to '%s'", url);
         logger.info(message);
         Reporter.log(message);
     }
@@ -112,7 +119,7 @@ public class LoggingWebDriverEventListener implements WebDriverEventListener {
 		return visibleText;
     }
     
-    private String getElementName(WebElement element) {
+    private String getElementIdentity(WebElement element) {
     	String elementName = "unknown";
         String id = element.getAttribute("id");
         String name = element.getAttribute("name");

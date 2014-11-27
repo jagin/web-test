@@ -9,6 +9,9 @@ import org.openqa.selenium.support.FindBy;
 
 import pl.webtest.page.Page;
 
+/**
+ * Google search results page
+ */
 public class SearchResultsPage extends Page {
 
 	@FindBy(name = "ires")

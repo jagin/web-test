@@ -9,6 +9,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import pl.webtest.page.Page;
 
+/**
+ * Google search page
+ */
 public class SearchPage extends Page {
 
 	// The element is looked up using the name attribute

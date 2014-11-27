@@ -27,7 +27,7 @@
         <slf4j.version>1.7.7</slf4j.version>
 		
 		<!-- Default suite files if not being specified from mvn command line -->
-		<suiteXmlFile>testng.xml</suiteXmlFile>
+		<webtest.testng>all</webtest.testng>
     </properties>
 
 	<dependencies>
@@ -156,7 +156,7 @@
 			        </systemPropertyVariables>		
 			        <!-- testng xml suite file to be used for test execution -->	
 					<suiteXmlFiles>
-						<suiteXmlFile>${project.build.testOutputDirectory}/${suiteXmlFile}</suiteXmlFile>
+						<suiteXmlFile>${project.build.testOutputDirectory}/${webtest.testng}.testng.xml</suiteXmlFile>
 					</suiteXmlFiles>
 					<properties>				
 						<!-- Setting ReportNG listeners -->

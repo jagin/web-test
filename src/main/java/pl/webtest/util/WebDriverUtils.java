@@ -16,19 +16,26 @@ import org.slf4j.LoggerFactory;
 
 import pl.webtest.Config;
 
+/**
+ * Webdriver utilities
+ */
 public class WebDriverUtils {
 	private static final Logger logger = LoggerFactory.getLogger(WebDriverUtils.class);
 	
-    private static String screenshotFolder = Config.SCREENSHOT_FOLDER;
-    
     private WebDriverUtils() {}
 	
-    // Save screen shot method
+    /**
+     *  Save screen shot method
+     * @param webDriver
+     * @param screenshotName name of the screenshot. It will be saved under @code Config.SCREENSHOT_FOLDER location.
+     * @return created screenshot file. null will be returned if the were some problems with creating the screenshot file.
+     */
     public static File saveScreenshot(WebDriver webDriver, String screenshotName) {
     	File dest = null;
         try {
         	WebDriver returned = null;
 			if (webDriver instanceof EventFiringWebDriver) {
+				// Unwrap real webdriver
 				EventFiringWebDriver eventFiringWebDriver = (EventFiringWebDriver)webDriver;
 				webDriver = eventFiringWebDriver.getWrappedDriver();
 			}       	
@@ -57,7 +64,7 @@ public class WebDriverUtils {
     }
 
     private static File getScreenshotFile(String screenshotName) {
-        File screenshotFolderFile = new File(screenshotFolder);
+        File screenshotFolderFile = new File(Config.SCREENSHOT_FOLDER);
         screenshotFolderFile.mkdirs();
 
         return new File(screenshotFolderFile, screenshotName + ".png");

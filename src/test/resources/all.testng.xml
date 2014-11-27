@@ -4,7 +4,8 @@
 
 	<suite-files>
 		<suite-file path="./web-test.testng.xml" />
-		<suite-file path="./google.testng.xml" />
+		<suite-file path="./google-search.testng.xml" />
+		<suite-file path="./google-translate.testng.xml" />
 	</suite-files>
 		
 </suite>
