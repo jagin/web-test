@@ -130,10 +130,10 @@
                 <version>${maven-surefire-plugin.version}</version>
                 <configuration>
                     <systemPropertyVariables>
-                        <!-- Set webdrivers location for selenium -->
-                        <webdriver.chrome.driver>drivers/chromedriver.exe</webdriver.chrome.driver>
-                        <webdriver.ie.driver>drivers/IEDriverServer.exe</webdriver.ie.driver>
-                        <webdriver.gecko.driver>drivers/geckodriver.exe</webdriver.gecko.driver>
+                        <!-- Set webdrivers location for selenium if needed, they need to be in PATH -->
+                        <!--<webdriver.chrome.driver>drivers/chromedriver.exe</webdriver.chrome.driver>-->
+                        <!--<webdriver.ie.driver>drivers/IEDriverServer.exe</webdriver.ie.driver>-->
+                        <!--<webdriver.gecko.driver>drivers/geckodriver.exe</webdriver.gecko.driver>-->
                         <!--webdriver.safari.driver></webdriver.safari.driver-->
                     </systemPropertyVariables>
                     <!-- testng xml suite file to be used for test execution -->
