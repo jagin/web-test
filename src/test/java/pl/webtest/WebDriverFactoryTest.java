@@ -6,6 +6,8 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.SkipException;
 import org.testng.annotations.Test;
 
+import static org.apache.commons.lang3.SystemUtils.IS_OS_MAC;
+import static org.apache.commons.lang3.SystemUtils.IS_OS_WINDOWS;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.notNullValue;
@@ -19,9 +21,6 @@ public class WebDriverFactoryTest {
 
     @Test
     public void createFirefoxDriverTest() {
-        if (System.getProperty("webdriver.gecko.driver") == null) {
-            throw new SkipException("The path to the driver executable (webdriver.gecko.driver) is not set");
-        }
         WebDriverFactory wdf = new WebDriverFactory("firefox");
         DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
         desiredCapabilities.setCapability("marionette", true);
@@ -32,9 +31,6 @@ public class WebDriverFactoryTest {
 
     @Test
     public void createChromeDriverTest() {
-        if (System.getProperty("webdriver.chrome.driver") == null) {
-            throw new SkipException("The path to the driver executable (webdriver.chrome.driver) is not set");
-        }
         WebDriverFactory wdf = new WebDriverFactory("chrome");
         WebDriver wd = wdf.createDriver(new DesiredCapabilities());
         assertThat(wd, is(notNullValue()));
@@ -44,8 +40,8 @@ public class WebDriverFactoryTest {
 
     @Test
     public void createIEDriverTest() {
-        if (System.getProperty("webdriver.ie.driver") == null) {
-            throw new SkipException("The path to the driver executable (webdriver.ie.driver) is not set");
+        if (!IS_OS_WINDOWS) {
+            throw new SkipException("IE tests can be only run in windows");
         }
         WebDriverFactory wdf = new WebDriverFactory("internet explorer");
         DesiredCapabilities capabilities = new DesiredCapabilities();
@@ -57,8 +53,8 @@ public class WebDriverFactoryTest {
 
     @Test
     public void createSafariDriverTest() {
-        if (System.getProperty("webdriver.safari.driver") == null) {
-            throw new SkipException("The path to the driver executable (webdriver.safari.driver) is not set");
+        if (!IS_OS_MAC) {
+            throw new SkipException("Safari test can be only run in mac");
         }
         WebDriverFactory wdf = new WebDriverFactory("safari");
         WebDriver wd = wdf.createDriver(new DesiredCapabilities());

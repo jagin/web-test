@@ -1,6 +1,8 @@
 package pl.webtest.util;
 
 import static java.io.File.separatorChar;
+import static org.apache.commons.lang3.SystemUtils.IS_OS_MAC;
+import static org.apache.commons.lang3.SystemUtils.IS_OS_WINDOWS;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 
@@ -38,10 +40,6 @@ public class WebDriverUtilsTest {
 	
 	@Test
 	public void saveScreenshotChromeTest() {
-		if(System.getProperty("webdriver.chrome.driver") == null) {
-			throw new SkipException("The path to the driver executable (webdriver.chrome.driver) is not set");
-		}
-		
 		WebDriverFactory wdf = new WebDriverFactory("chrome");
 		WebDriver wd = wdf.createDriver(new DesiredCapabilities());
 		wd.get("http://google.com");
@@ -59,10 +57,9 @@ public class WebDriverUtilsTest {
 	
 	@Test
 	public void saveScreenshotIETest() {
-		if(System.getProperty("webdriver.ie.driver") == null) {
-			throw new SkipException("The path to the driver executable (webdriver.ie.driver) is not set");
+		if (!IS_OS_WINDOWS) {
+			throw new SkipException("IE tests can be only run in windows");
 		}
-		
 		WebDriverFactory wdf = new WebDriverFactory("internet explorer");
 		DesiredCapabilities capabilities = new DesiredCapabilities();
 		capabilities.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS, true);
@@ -82,10 +79,9 @@ public class WebDriverUtilsTest {
 	
 	@Test
 	public void saveScreenshotSafariTest() {
-		if(System.getProperty("webdriver.safari.driver") == null) {
-			throw new SkipException("The path to the driver executable (webdriver.safari.driver) is not set");
+		if (!IS_OS_MAC) {
+			throw new SkipException("Safari test can be only run in mac");
 		}
-		
 		WebDriverFactory wdf = new WebDriverFactory("safari");
 		WebDriver wd = wdf.createDriver(new DesiredCapabilities());
 		wd.get("http://google.com");
