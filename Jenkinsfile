@@ -1,13 +1,11 @@
-node {
+node('windows') {
     def mvnHome
     stage('Preparation') {
         checkout scm
         mvnHome = tool 'm3'
     }
     stage('Build') {
-        if (isUnix()) {
-            sh "'${mvnHome}/bin/mvn' test -Dwebtest.testng=all"
-        } else {
+            //running on windows to check IE
             bat(/"${mvnHome}\bin\mvn" test -Dwebtest.testng=all/)
         }
     }
