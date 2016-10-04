@@ -5,7 +5,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.firefox.internal.ProfilesIni;
-import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.BrowserType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.slf4j.Logger;
@@ -125,7 +124,7 @@ public abstract class SeleniumTestBase {
                 if (BrowserType.IE.equalsIgnoreCase(browser)) {
                     // Capability that defines to ignore browser protected mode settings during starting by IEDriverServer.
                     // See: http://jimevansmusic.blogspot.com/2012/08/youre-doing-it-wrong-protected-mode-and.html
-                    capabilities.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS, true);
+                    // capabilities.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS, true);
                 }
 
                 // Custom capabilities for firefox

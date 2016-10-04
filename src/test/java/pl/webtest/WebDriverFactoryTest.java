@@ -45,7 +45,6 @@ public class WebDriverFactoryTest {
         }
         WebDriverFactory wdf = new WebDriverFactory("internet explorer");
         DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS, true);
         WebDriver wd = wdf.createDriver(capabilities);
         assertThat(wd, is(notNullValue()));
         wd.quit();

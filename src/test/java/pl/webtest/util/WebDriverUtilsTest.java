@@ -62,7 +62,6 @@ public class WebDriverUtilsTest {
 		}
 		WebDriverFactory wdf = new WebDriverFactory("internet explorer");
 		DesiredCapabilities capabilities = new DesiredCapabilities();
-		capabilities.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS, true);
 		WebDriver wd = wdf.createDriver(capabilities);
 		wd.get("http://google.com");
 		Path screenshotFilePath = WebDriverUtils.saveScreenshot(wd, getScreenshotName("ie"));
