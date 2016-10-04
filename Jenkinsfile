@@ -1,19 +1,23 @@
 node {
     def mvnHome
-    stage('Preparation') { // for display purposes
+    stage('Preparation') {
         checkout scm
         mvnHome = tool 'm3'
     }
     stage('Build') {
-        // Run the maven build
         if (isUnix()) {
-            sh "'${mvnHome}/bin/mvn' test -Dwebtest.testng=google-search"
+            sh "'${mvnHome}/bin/mvn' test -Dwebtest.testng=all"
         } else {
-            bat(/"${mvnHome}\bin\mvn" test -Dwebtest.testng=google-search/)
+            bat(/"${mvnHome}\bin\mvn" test -Dwebtest.testng=all/)
         }
     }
     stage('Results') {
         junit '**/target/surefire-reports/TEST-*.xml'
-        archive 'target/*.jar'
+        publishHTML([allowMissing         : false,
+                     alwaysLinkToLastBuild: false,
+                     keepAll              : true,
+                     reportDir            : 'target\\surefire-reports\\html\\',
+                     reportFiles          : 'index.html',
+                     reportName           : 'ReportNG'])
     }
 }
