@@ -8,7 +8,6 @@ node('windows') {
             //running on windows to check IE
             bat(/"${mvnHome}\bin\mvn" test -Dwebtest.testng=all/)
         }
-    }
     stage('Results') {
         junit '**/target/surefire-reports/TEST-*.xml'
         publishHTML([allowMissing         : false,
