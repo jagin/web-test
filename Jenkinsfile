@@ -9,7 +9,7 @@ node('windows') {
             bat(/"${mvnHome}\bin\mvn" test -Dwebtest.testng=all/)
         }
     stage('Results') {
-        junit '**/target/surefire-reports/TEST-*.xml'
+        junit keepLongStdio: true, testResults: '**/target/surefire-reports/TEST-*.xml'
         publishHTML([allowMissing         : false,
                      alwaysLinkToLastBuild: false,
                      keepAll              : true,
