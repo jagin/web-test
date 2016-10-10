@@ -10,18 +10,12 @@ Prerequisits are Maven 3.x and JDK 1.7 or higher ready to use.
 
 Be sure you have Internet connection :)
 
-If you have FireFox already installed you can run all tests right the way with the following command: 
-
-```mvn test```
-
-Firefox is a default browser as you don't need to download any additional drivers.
-
-The tests can be also run on the following browsers:
+The tests can be run on the following browsers:
 
 - Chrome (the fastest)
+- Firefox
 - Internet Explorer
 - Safari
-- htmlunit (headless browser)
 
 but you have to [download](http://www.seleniumhq.org/download/) the browser drivers for required browser and 
 configure it in `pom.xml`. Look for:
@@ -30,10 +24,11 @@ configure it in `pom.xml`. Look for:
     <!-- Set webdrivers location for selenium -->
     <webdriver.chrome.driver>drivers/chromedriver.exe</webdriver.chrome.driver>
     <webdriver.ie.driver>drivers/IEDriverServer.exe</webdriver.ie.driver>
+    <webdriver.gecko.driver>driver/geckodriver.exe</webdriver.gecko.driver>
     <!--webdriver.safari.driver></webdriver.safari.driver-->
 ```
 
-By default you can create `drivers` directory in the project location and put the driver executable files here.
+Setting above parameters is unnecessary if you put drivers in any directory that is in you current [path](http://www.howtogeek.com/118594/how-to-edit-your-system-path-for-easy-command-line-access/).
 
 When the tests are finished we can look at the nice looking report (thanks to [ReportNG](http://reportng.uncommons.org)). Just open `target\surefire-reports\html\index.html` in your browser.
 
@@ -79,6 +74,9 @@ Read the comments in the file and experiment. For example we can switch off exte
 
 Spot the test report for the difference.
 
+#Jenkins
+TODO: describe jenkins configuration.
+
 # Multithreaded tests
 TestNG allows you to run your test methods in separate threads. You can configure the size of the thread pool and the time-out and TestNG takes care of the rest.
 
@@ -105,3 +103,10 @@ Be aware that webdriver settings (the one from `SeleniumTestBase.java`) are per 
 - [TestNG](http://testng.org)
 - [ReportNG](http://reportng.uncommons.org)
 - [hamcrest](https://code.google.com/p/hamcrest)
+
+# Todo
+
+- find ReportNG replacement
+- add some BDD framework
+- add some screenshot comparision for visual testing
+- add MS Edge configuration

@@ -2,8 +2,9 @@ package pl.webtest.util;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 
-import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -30,10 +31,10 @@ public class WebDriverUtils {
      * @param screenshotName name of the screenshot. It will be saved under @code Config.SCREENSHOT_FOLDER location.
      * @return created screenshot file. null will be returned if the were some problems with creating the screenshot file.
      */
-    public static File saveScreenshot(WebDriver webDriver, String screenshotName) {
-    	File dest = null;
+    public static Path saveScreenshot(WebDriver webDriver, String screenshotName) {
+    	Path dest = null;
         try {
-        	WebDriver returned = null;
+        	WebDriver returned;
 			if (webDriver instanceof EventFiringWebDriver) {
 				// Unwrap real webdriver
 				EventFiringWebDriver eventFiringWebDriver = (EventFiringWebDriver)webDriver;
@@ -50,8 +51,9 @@ public class WebDriverUtils {
                 File src = ((TakesScreenshot) returned).getScreenshotAs(OutputType.FILE);
                 try {
                 	dest = getScreenshotFile(screenshotName);
-                    FileUtils.copyFile(src, dest);
-                    logger.debug("Screenshot saved to " + dest.getAbsolutePath());
+                    Files.createDirectories(dest.getParent());
+                    Files.copy(src.toPath(), dest);
+                    logger.debug("Screenshot saved to " + dest.toAbsolutePath());
                 } catch (IOException e) {
                     logger.error("Error saving screenshot", e);
                 }
@@ -63,11 +65,8 @@ public class WebDriverUtils {
         return dest;
     }
 
-    private static File getScreenshotFile(String screenshotName) {
-        File screenshotFolderFile = new File(Config.SCREENSHOT_FOLDER);
-        screenshotFolderFile.mkdirs();
-
-        return new File(screenshotFolderFile, screenshotName + ".png");
+    private static Path getScreenshotFile(String screenshotName) {
+        return new File(new File(Config.SCREENSHOT_FOLDER), screenshotName + ".png").toPath();
     }
 
 
