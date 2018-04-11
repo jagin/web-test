@@ -2,8 +2,12 @@ package pl.webtest.util;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.charset.Charset;
+import java.util.List;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.IOUtils;
+import org.apache.commons.lang3.SystemUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -70,5 +74,14 @@ public class WebDriverUtils {
         return new File(screenshotFolderFile, screenshotName + ".png");
     }
 
-
+    /*
+    public static void killProcess(String processName) throws IOException {
+        // Process names for browsers: "firefox", "iexplore", "chrome", "MicrosoftEdge"
+        if (SystemUtils.IS_OS_LINUX) {
+            Runtime.getRuntime().exec("/bin/sh -c ps -ef | grep -w " + processName + " | grep -v grep | awk '/[0-9]/{print $2}' | xargs kill -9 ");
+        } else if (SystemUtils.IS_OS_WINDOWS) {
+            Runtime.getRuntime().exec("taskkill /F /IM " + processName + ".exe");
+        }
+    }
+    */
 }

@@ -49,7 +49,7 @@ public class GoogleSearchSeleniumTest extends SeleniumTestBase {
         // Sleep until the div we want is visible or 5 seconds is over
         // We need to wait as div with search results is loaded dynamically on every key input
         WebDriverWait wait = new WebDriverWait(getWebDriver(), 5);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("gbqfsf")));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("sbsb_b")));
         
         /* The above is the same as below but uglier
         long end = System.currentTimeMillis() + 5000;
@@ -64,7 +64,7 @@ public class GoogleSearchSeleniumTest extends SeleniumTestBase {
         */
 
         // And now list the suggestions
-        List<WebElement> allSuggestions = getWebDriver().findElements(By.className("gbqfsf"));
+        List<WebElement> allSuggestions = getWebDriver().findElements(By.className("sbsb_b"));
         
         assertThat(allSuggestions.size(), greaterThan(0));
         Reporter.log("Google search successful");

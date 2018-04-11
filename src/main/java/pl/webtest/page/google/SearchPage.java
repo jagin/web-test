@@ -29,7 +29,7 @@ public class SearchPage extends Page {
         // Sleep until the div we want is visible or 5 seconds is over
         // We need to wait as div with search results is loaded dynamically on every key input
         WebDriverWait wait = new WebDriverWait(webDriver, 5);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#ires")));		
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#ires")));
 		
 		return getInstance(webDriver, SearchResultsPage.class);
 	}

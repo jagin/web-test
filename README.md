@@ -6,34 +6,28 @@ It is a baseline template for new Selenium test projects.
 
 ## Installation and running
 
-Prerequisits are Maven 3.x and JDK 1.7 or higher ready to use.
+Prerequisits are Maven 3.x and JDK 1.8 or higher ready to use.
 
 Be sure you have Internet connection :)
 
-If you have FireFox already installed you can run all tests right the way with the following command: 
-
-```mvn test```
-
-Firefox is a default browser as you don't need to download any additional drivers.
-
-The tests can be also run on the following browsers:
-
-- Chrome (the fastest)
-- Internet Explorer
-- Safari
-- htmlunit (headless browser)
-
-but you have to [download](http://www.seleniumhq.org/download/) the browser drivers for required browser and 
+First [download](http://www.seleniumhq.org/download/) the browser drivers for required browser and 
 configure it in `pom.xml`. Look for:
 
 ```xml
     <!-- Set webdrivers location for selenium -->
+    <webdriver.gecko.driver>drivers/geckodriver.exe</webdriver.gecko.driver>
     <webdriver.chrome.driver>drivers/chromedriver.exe</webdriver.chrome.driver>
     <webdriver.ie.driver>drivers/IEDriverServer.exe</webdriver.ie.driver>
+    <webdriver.edge.driver>drivers/MicrosoftWebDriver.exe</webdriver.edge.driver>
     <!--webdriver.safari.driver></webdriver.safari.driver-->
 ```
 
-By default you can create `drivers` directory in the project location and put the driver executable files here.
+You can create `drivers` directory in the project location and put the driver executable files here.
+Comment the one you are not using.
+
+Run all tests with the following command: 
+
+```mvn test```
 
 When the tests are finished we can look at the nice looking report (thanks to [ReportNG](http://reportng.uncommons.org)). Just open `target\surefire-reports\html\index.html` in your browser.
 
@@ -89,7 +83,7 @@ Look at the `src\test\resources\all.testng.xml` and experiment with `parallel` a
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Test Automation Suite" verbose="1" parallel="tests" thread-count="3">
 	<suite-files>
-		<suite-file path="./web-test.testng.xml" />
+		<suite-file path="./webdriver-test.testng.xml" />
 		<suite-file path="./google-search.testng.xml" />
 		<suite-file path="./google-translate.testng.xml" />
 	</suite-files>

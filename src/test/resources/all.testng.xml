@@ -3,9 +3,9 @@
 <suite name="Test Automation Suite" verbose="1" parallel="tests" thread-count="3">
 
 	<suite-files>
-		<suite-file path="./web-test.testng.xml" />
-		<suite-file path="./google-search.testng.xml" />
-		<suite-file path="./google-translate.testng.xml" />
+		<suite-file path="webdriver-test.testng.xml" />
+		<suite-file path="google-search.testng.xml" />
+		<suite-file path="google-translate.testng.xml" />
 	</suite-files>
 		
 </suite>
